@@ -27,6 +27,7 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
         $course->fill($request->input());
         $course->school()->associate(School::findOrFail($request->input('school.id')));
+        $course->save();
         return response()->json([], 204);
     }
 
